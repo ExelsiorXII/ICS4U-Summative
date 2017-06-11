@@ -208,9 +208,9 @@ void Song2title()  {
            
           lcd.clear();
           lcd.setCursor(0, 0);
-          lcd.print("SUPER MARIO BROS");
+          lcd.print("JUSTIN PAOLI");
           lcd.setCursor(0, 1);
-          lcd.print("   UNDERWORLD");
+          lcd.print("   SONG");
           delay(50);
           }
         
@@ -251,9 +251,9 @@ void Song3title()  {
            
         lcd.clear();
         lcd.setCursor(0, 0);
-        lcd.print("    JEOPARDY");
+        lcd.print("    HAPPY");
         lcd.setCursor(0, 1);
-        lcd.print("   THEME SONG");
+        lcd.print("   BIRTHDAY");
         delay(50);
         }
         

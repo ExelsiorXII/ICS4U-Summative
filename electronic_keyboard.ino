@@ -1,14 +1,13 @@
 // LCD Screen, Switch & LED Setup
 #include <LiquidCrystal.h>
 #include "pitches.h"
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // adds LCD with pins used
 const int LCDswitchPin = 7; // define menu/LCD switch name
 int LCDswitchState = 0; // set menu/LCD switch state to off/low
 int prevLCDswitchState = 0;
-int blueLED = 6;
+int redLED = 6;
 int LCDswitchCounter = 0;   // counter for the number of menu button presses 
-    // (this code counts the menu button pushes, displays them on your computer, 
-    // and starts from zero after ending "menu mode". 
+    // (this code counts the menu button pushes and starts from zero after ending "menu mode". 
 
 // Music Note Keys - Set frequency values
 int notes[] = {262, 294, 330, 349, 392, 440, 494}; // Set notes C, D, E, F, G, A, B
@@ -17,13 +16,12 @@ int notes[] = {262, 294, 330, 349, 392, 440, 494}; // Set notes C, D, E, F, G, A
 
 //////////////////////////////////////////////
 void setup() {
-  
-  Serial.begin(9600);
-  
-  lcd.begin(16, 2);
+
+    // Defines Input and Output pins, starts LCD screen
+  lcd.begin(16, 2); 
   pinMode(LCDswitchPin, INPUT);
-  pinMode(blueLED, OUTPUT);
-  digitalWrite(blueLED, LOW); // LED stays off while piano keys are on
+  pinMode(redLED, OUTPUT);
+  digitalWrite(redLED, LOW); // LED stays off while piano keys are on
   
 
 } // end setup
@@ -34,16 +32,15 @@ void loop() {
   
   LCDswitchState = digitalRead(LCDswitchPin);
   int keyVal = analogRead(A0);
-  Serial.println(keyVal);
   lcd.noDisplay();
-  digitalWrite(blueLED, LOW); // Turn LED back off every time main loop starts
+  digitalWrite(redLED, LOW); // Turn LED back off every time main loop starts
   
 
 
 // ************** START "LCDstart" WHEN MENU BUTTON IS PUSHED ***********
 
     if (LCDswitchState == HIGH)  {
-      digitalWrite(blueLED, HIGH); // Turn LED on to show piano keys are disabled and device is in "menu mode"
+      digitalWrite(redLED, HIGH); // Turn LED on to show piano keys are disabled and device is in "menu mode"
       lcd.display();
       lcd.clear();
       LCDstart();
@@ -106,8 +103,6 @@ void LCDstart()  {
       //************* START SONG 1 TITLE LOOP ********************
       if (LCDswitchState == HIGH)  { // if menu button is pressed, then...
         LCDswitchCounter++; // set button count to 1
-        Serial.print("number of button pushes:  ");
-        Serial.println(LCDswitchCounter);
         delay(300); // min. time until counts adds 1 more
 
         Song1title();
@@ -143,8 +138,6 @@ void Song1title()  {
       //************* START SONG 2 TITLE LOOP ********************
       if (LCDswitchState == HIGH)  { // if menu button is pressed, then...
         LCDswitchCounter++; // set button count to 2
-        Serial.print("number of button pushes:  ");
-        Serial.println(LCDswitchCounter);
         delay(300); // min. time until counts adds 1 more
 
         Song2title();
@@ -154,10 +147,9 @@ void Song1title()  {
         
       else  { // if menu button is not pressed   
         int keyVal = analogRead(A0);
-        Serial.println(keyVal); 
-         
+
          if(keyVal >= 2)  {
-           digitalWrite(blueLED, HIGH);
+           digitalWrite(redLED, HIGH);
            Song1();
            break;
            } // end if
@@ -187,8 +179,6 @@ void Song2title()  {
       //************* START SONG 3 TITLE LOOP ********************
       if (LCDswitchState == HIGH)  { // if menu button is pressed, then...
         LCDswitchCounter++; // set button count to 3
-        Serial.print("number of button pushes:  ");
-        Serial.println(LCDswitchCounter);
         delay(300); // min. time until counts adds 1 more
 
         Song3title();
@@ -198,19 +188,18 @@ void Song2title()  {
         
       else  { // if menu button is not pressed
         int keyVal = analogRead(A0);
-        Serial.println(keyVal); 
          
          if(keyVal >= 2)  {
-           digitalWrite(blueLED, HIGH);
+           digitalWrite(redLED, HIGH);
            Song2();
            break;
            } // end if
            
           lcd.clear();
           lcd.setCursor(0, 0);
-          lcd.print("JUSTIN PAOLI");
+          lcd.print("JUSTIN PAOLI'S");
           lcd.setCursor(0, 1);
-          lcd.print("   SONG");
+          lcd.print("      SONG");
           delay(50);
           }
         
@@ -232,8 +221,6 @@ void Song3title()  {
       //************* START SONG 4 TITLE LOOP ********************
       if (LCDswitchState == HIGH)  { // if menu button is pressed, then...
         LCDswitchCounter=0; // set button count to 4
-        Serial.print("number of button pushes:  ");
-        Serial.println(LCDswitchCounter);
         delay(300); // min. time until counts adds 1 more
         lcd.clear();
         break;
@@ -241,10 +228,10 @@ void Song3title()  {
         
       else  { // if menu button is not pressed
         int keyVal = analogRead(A0);
-        Serial.println(keyVal); 
+     //   Serial.println(keyVal); 
          
          if(keyVal >= 2)  {
-           digitalWrite(blueLED, HIGH);
+           digitalWrite(redLED, HIGH);
            Song3();
            break;
            } // end if

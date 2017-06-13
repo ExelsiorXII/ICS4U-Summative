@@ -53,38 +53,38 @@ void loop() {
 
 ////// KEYBOARD NOTES & FREQUENCY STATEMENTS //////
 // Uses the resistor ladder to change the voltage of each piano key button
-//Lower resistance, lower pitch
+// Lower resistance, lower pitch
   if(keyVal == 1023)  {
     tone(8, notes[0]); // C
-    } // end if
+    } 
     
         else if(keyVal >= 990 & keyVal <=1010)  {
           tone(8, notes[1]); // D
-          } // end else if
+          } 
     
         else if(keyVal >= 960 && keyVal <= 980)  {
           tone(8, notes[2]); // E
-          } // end else if
+          } 
         
         else if(keyVal >= 900 && keyVal <= 945)  {
           tone(8, notes[3]); // F
-          } // end else if
+          } 
         
         else if(keyVal >= 650 && keyVal <= 710)  {
           tone(8, notes[4]); // G
-          } // end else if
+          } 
         
         else if(keyVal >= 500 && keyVal <= 550)  {
           tone(8, notes[5]); // A
-          } // end else if
+          } 
         
         else if(keyVal >= 5 && keyVal <= 10)  {
           tone(8, notes[6]); // B
-          } // end else if
+          } 
         
         else if(keyVal <= 1)  { // if no switch is pressed, do not play tone
           noTone(8);
-          } // end else if
+          } 
 
 } //end frequency tone loop
 
@@ -197,9 +197,9 @@ void Song2title()  {
            
           lcd.clear();
           lcd.setCursor(0, 0);
-          lcd.print("JUSTIN PAOLI'S");
+          lcd.print("HOCKEYLOVER99'S");
           lcd.setCursor(0, 1);
-          lcd.print("      SONG");
+          lcd.print("   THEME SONG");
           delay(50);
           }
         
@@ -238,9 +238,9 @@ void Song3title()  {
            
         lcd.clear();
         lcd.setCursor(0, 0);
-        lcd.print("    HAPPY");
+        lcd.print("     HAPPY");
         lcd.setCursor(0, 1);
-        lcd.print("   BIRTHDAY");
+        lcd.print("    BIRTHDAY");
         delay(50);
         }
         
